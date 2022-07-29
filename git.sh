@@ -15,6 +15,6 @@ sleep 2s
 read -p 'add a commit message: ' message
 git commit -m "$message"
 sleep 2s
-echo "#--------------------give your git message--------------------#"
+echo "#--------------------pushing--------------------#"
 # git push git@gitlab.com/lpdm1/front-end.git
 git push
