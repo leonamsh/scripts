@@ -1,5 +1,5 @@
 clear &&
-    sleep 2s
+sleep 2s
 echo "#--------------------Iniciando atualização do sistema--------------------#"
 echo ""
 #sincronização total/procura por atualização.

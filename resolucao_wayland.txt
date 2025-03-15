@@ -1,0 +1,14 @@
+
+# mudar resolução do monitor em wayland
+cd /sys/class/drm
+# verifique os arquivos na pasta
+ls
+# aqui você verá todos os seus monitores disponíveis, precisamos verificar qual(is) estão conectados com o comando abaixo
+cat card1-DP-1/status
+# vamos alterar a resolução em
+sudo nano /etc/default/grub
+# vá até GRUB_CMDLINE_LINUX_DEFAULT='quiet splash udev.log_priority=3' e no final da linha adicione video='nome do monitor':'reolução escolhida@frequencia'
+GRUB_CMDLINE_LINUX_DEFAULT='quiet splash udev.log_priority=3 video=DP-1:1440x900@75'
+# agora atualize o grub
+sudo update-grub
+sudo reboot now
