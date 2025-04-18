@@ -14,7 +14,7 @@ sudo pacman -S --noconfirm --needed \
     ttf-fira-code ttf-jetbrains-mono ttf-ubuntu-font-family \
     alacritty vlc steam lutris goverlay \
     pcmanfm-gtk3 thunar feh wlogout numlockx \
-    gvfs dosbox samba
+    gvfs dosbox samba xfce4-power-manager lxappearance flameshot
 
 echo -e "\n[+] Instalando bibliotecas para Wine/Gaming...\n"
 sudo pacman -S --noconfirm --needed \
@@ -42,7 +42,7 @@ if ! command -v paru &>/dev/null; then
 fi
 
 paru -S --noconfirm --needed \
-    visual-studio-code-bin
+    visual-studio-code-bin qtile-extras
 # paru -S firefox-nightly-bin firefox-nightly-i18n-pt-br --noconfirm --needed
 
 echo -e "\n[+] Configurando Git...\n"
