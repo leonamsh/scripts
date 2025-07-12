@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define o caminho base correto para as entradas do systemd-boot
-BOOT_ENTRIES_DIR="/boot/efi/loader/entries"
+BOOT_ENTRIES_DIR="/efi/loader/entries"
 
 # Tenta encontrar o arquivo de entrada do systemd-boot.
 # É crucial que este diretório seja acessível.

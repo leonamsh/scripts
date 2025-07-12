@@ -2,7 +2,7 @@ sleep 2s
 echo "#--------------------starting git--------------------#"
 sleep 2s
 git config --global user.email "lpdmonteiro@gmail.com"
-git config --global user.name "Leonam Monteiro"
+git config --global user.name "leonamsh"
 git config --global --add safe.directory E:/git/scripts
 echo "#--------------------adding modified files to git--------------------#"
 git add --all
