@@ -72,6 +72,12 @@ sudo dnf install -y picom
 sudo dnf install -y rofi
 sudo dnf install -y dmenu
 
+echo -e "\n[+] Instalando Neovide e suas dependências...\n"
+sudo dnf install fontconfig-devel freetype-devel @development-tools \
+    libstdc++-static libstdc++-devel
+curl --proto '=https' --tlsv1.2 -sSf "https://sh.rustup.rs" | sh
+cargo install --git https://github.com/neovide/neovide
+
 echo -e "\n[+] Instalando suporte Flatpak e aplicativos...\n"
 sudo dnf install -y flatpak
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
