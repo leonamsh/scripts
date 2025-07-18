@@ -86,15 +86,35 @@ flatpak install -y flathub net.davidotek.pupgui2
 flatpak install -y flathub com.spotify.Client
 flatpak install -y flathub com.mattjakeman.ExtensionManager
 
+echo -e "\n[+] Configurando Oh-My-Zsh e plugins...\n"
+# Oh-My-Zsh base installation (if not already installed)
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
+    echo "Instalando Oh-My-Zsh..."
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+fi
+
+# Zsh plugins
+git clone https://github.com/unixorn/fzf-zsh-plugin ~/.oh-my-zsh/custom/plugins/fzf-zsh-plugin || echo "fzf-zsh-plugin already exists, skipping clone."
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions || echo "zsh-autosuggestions already exists, skipping clone."
+git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-completions || echo "zsh-completions already exists, skipping clone."
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting || echo "zsh-syntax-highlighting already exists, skipping clone."
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
+
 echo -e "\n[+] Instalando Visual Studio Code...\n"
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
 sudo dnf check-update
 sudo dnf install -y code
 
+echo -e "\n[+] Configurando Git...\n"
+read -rep "Digite seu email para Git: " git_email
+read -rep "Digite seu nome para Git: " git_name
+git config --global user.email "${git_email}"
+git config --global user.name "${git_name}"
+
 # Optional: qtile-extras (uncomment and adjust if you need it and know the installation method)
-# echo -e "\n[+] Installing qtile-extras (if available via DNF or pip)...\n"
-# sudo dnf install -y python3-pip # If you plan to install via pip
-# pip install qtile-extras # Consider virtual environments for Python packages
+echo -e "\n[+] Installing qtile-extras (if available via DNF or pip)...\n"
+sudo dnf install -y python3-pip # If you plan to install via pip
+pip install qtile-extras        # Consider virtual environments for Python packages
 
 echo -e "\n✅ Configuração inicial concluída com sucesso!\n"
