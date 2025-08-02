@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Criar diretório de montagem
-sudo mkdir -p /run/media/Backup
+sudo mkdir -p /run/media/lm/Backup
 
 # Listar dispositivos e solicitar escolha do usuário
 echo "Dispositivos disponíveis:"

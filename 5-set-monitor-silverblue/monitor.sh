@@ -5,10 +5,10 @@
 DRM_PATH="/sys/class/drm"
 
 # Verificação de root
-if [[ $EUID -ne 0 ]]; then
-    echo "Este script precisa ser executado como root. Use sudo."
-    exit 1
-fi
+#if [[ $EUID -ne 0 ]]; then
+#    echo "Este script precisa ser executado como root. Use sudo."
+#    exit 1
+#fi
 
 # Acessar a pasta DRM
 cd "$DRM_PATH" || {
@@ -48,7 +48,7 @@ KERNEL_ARG="video=$MONITOR_NAME:$RESOLUTION@$REFRESH_RATE"
 echo "Adicionando argumento ao kernel: $KERNEL_ARG"
 
 # Adicionar argumento (sem duplicar se já existir)
-if sudo rpm-ostree kargs --append="$KERNEL_ARG"; then
+if rpm-ostree kargs --append="$KERNEL_ARG"; then
     echo -e "\n✅ Argumento adicionado com sucesso."
     echo "🔎 Verifique com: rpm-ostree kargs"
 else

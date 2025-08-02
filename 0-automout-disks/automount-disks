@@ -1,4 +1,4 @@
-sudo mkdir /media/Backup
+sudo mkdir /run/media/lm/Backup
 -- Copiar o UUID do disco (normalmente 7A608AB7608A79A1) e pegar o endereço /dev/sdb2 dele.
 sudo blkid
 sudo nano /etc/fstab
