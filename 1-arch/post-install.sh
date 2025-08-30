@@ -6,12 +6,11 @@ echo -e "\n[+] Sincronizando e atualizando o sistema...\n"
 sudo pacman -Syyu --noconfirm
 
 echo -e "\n[+] Instalando pacotes essenciais (pacman)...\n"
-sudo pacman -S --noconfirm --needed \
-    curl unzip git jq base-devel \
-    ntfs-3g gedit emacs \
+sudo pacman -S --noconfirm \
+    curl unzip git jq base-devel ntfs-3g gedit emacs \
     ttf-fira-code ttf-jetbrains-mono ttf-ubuntu-font-family \
     alacritty vlc steam lutris goverlay \
-    pcmanfm thunar feh wlogout numlockx \
+    pcmanfm thunar feh numlockx \
     gvfs dosbox samba xfce4-power-manager lxappearance flameshot \
     wine winetricks wine-mono wine_gecko \
     vulkan-icd-loader lib32-vulkan-icd-loader vkd3d lib32-vkd3d \
@@ -67,7 +66,7 @@ if ! command -v paru &>/dev/null; then
     echo "[!] ATENÇÃO: A instalação de 'paru' via 'pamac' é comum em Manjaro. Se você está usando Arch Linux puro,"
     echo "    pode ser necessário instalar 'paru' manualmente compilando-o do AUR."
     echo "    (git clone https://aur.archlinux.org/paru.git && cd paru && makepkg -si)"
-    pamac install paru --no-confirm || echo "[!] Falha ao instalar paru via pamac. Tente manualmente ou use o método do AUR."
+    yay -S paru --noconfirm || echo "[!] Falha ao instalar paru via pamac. Tente manualmente ou use o método do AUR."
 else
     echo "Paru já está instalado."
 fi
@@ -77,7 +76,7 @@ echo -e "\n[+] Instalando pacotes do AUR (paru)...\n"
 # Se paru não foi instalado com sucesso acima, este passo pode falhar.
 if command -v paru &>/dev/null; then
     paru -S --noconfirm --needed \
-        visual-studio-code-bin qtile-extras # firefox-nightly-bin firefox-nightly-i18n-pt-br
+        visual-studio-code-bin #qtile-extras # firefox-nightly-bin firefox-nightly-i18n-pt-br
 else
     echo "AVISO: Paru não está instalado ou falhou na instalação. Pulando instalação de pacotes AUR."
     echo "Por favor, instale 'visual-studio-code-bin' e 'qtile-extras' manualmente se necessário."
